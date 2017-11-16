@@ -9,8 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Router = require("koa-router");
-const router = new Router();
 exports.userRouter = new Router();
-exports.userRouter.get('/', (ctx) => __awaiter(this, void 0, void 0, function* () {
-    ctx.body = { id: 1, name: 'tang' };
+const models_1 = require("../models");
+exports.userRouter.get('/:id', (ctx) => __awaiter(this, void 0, void 0, function* () {
+    ctx.body = { id: ctx.params.id, name: 'tang' };
+}));
+exports.userRouter.post('/', (ctx) => __awaiter(this, void 0, void 0, function* () {
+    try {
+        ctx.response.body = yield models_1.User.create(ctx.request.body);
+    }
+    catch (err) {
+        ctx.response.status = 404;
+    }
 }));

@@ -1,7 +1,16 @@
 import * as Router from 'koa-router';
-const router = new Router();
-
 export const userRouter = new Router();
-userRouter.get('/', async (ctx) => {
-    ctx.body = { id: 1, name: 'tang' };
+
+import { User } from '../models';
+
+userRouter.get('/:id', async (ctx) => {
+    ctx.body = { id: ctx.params.id, name: 'tang' };
+});
+
+userRouter.post('/', async (ctx) => {
+    try {
+        ctx.response.body = await User.create(ctx.request.body);
+    } catch (err) {
+        ctx.response.status = 404;
+    }
 });

@@ -8,9 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const log4js = require("log4js");
+const log_1 = require("../config/log");
+log4js.configure(log_1.logConfig);
 exports.logger = () => {
     return (ctx, next) => __awaiter(this, void 0, void 0, function* () {
-        console.log(ctx.method, ctx.header.host + ctx.url);
+        const startedTime = new Date();
         yield next();
+        const elaspedTIme = new Date().getDate() - startedTime.getDate();
+        console.log(`${ctx.method} ${ctx.host} ${ctx.url} - ${elaspedTIme}ms`);
     });
 };

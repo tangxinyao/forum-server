@@ -12,6 +12,7 @@ gulp.task('dev', ['compile'], function () {
         script: 'dist/app.js',
         watch: 'src',
         ext: 'ts',
+        stdout: true,
         tasks: ['compile']
     })
     stream.on('restart', function () {
