@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 function connectDB(url, options) {
+    mongoose.Promise = global.Promise;
     const db = mongoose.connection;
     db.on('error', (err) => {
         console.log('connection error:', err);
@@ -9,6 +10,6 @@ function connectDB(url, options) {
     db.once('open', () => {
         console.log('connection success.');
     });
-    mongoose.createConnection(url, options);
+    mongoose.connect(url, options);
 }
 exports.connectDB = connectDB;
