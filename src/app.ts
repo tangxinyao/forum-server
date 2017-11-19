@@ -16,10 +16,13 @@ app.use(bodyParser({
 
 // routes
 import * as Router from 'koa-router';
-const router = new Router();
-app.use(router.routes()).use(router.allowedMethods());
-
+import { sessionRouter } from './routes';
 import { userRouter } from './routes';
+
+const router = new Router();
 router.use('/users', userRouter.routes(), userRouter.allowedMethods());
+router.use('/sessions', sessionRouter.routes(), sessionRouter.allowedMethods());
+
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(3000);

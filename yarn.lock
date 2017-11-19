@@ -48,6 +48,12 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
+"@types/form-data@*":
+  version "2.2.1"
+  resolved "http://registry.npm.taobao.org/@types/form-data/download/@types/form-data-2.2.1.tgz#ee2b3b8eaa11c0938289953606b745b738c54b1e"
+  dependencies:
+    "@types/node" "*"
+
 "@types/http-assert@*":
   version "1.2.1"
   resolved "http://registry.npm.taobao.org/@types/http-assert/download/@types/http-assert-1.2.1.tgz#94331490c7ccea7a233a2ec0da3282d72b968e92"
@@ -110,6 +116,13 @@
 "@types/node@*":
   version "8.0.49"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.0.49.tgz#417f86ab4829c629fe561779ee48751e0fe2a11b"
+
+"@types/request@^2.0.8":
+  version "2.0.8"
+  resolved "http://registry.npm.taobao.org/@types/request/download/@types/request-2.0.8.tgz#424d3de255868107ed4dd6695c65c5f1766aba80"
+  dependencies:
+    "@types/form-data" "*"
+    "@types/node" "*"
 
 "@types/serve-static@*":
   version "1.13.0"
@@ -3819,7 +3832,7 @@ request@2.81.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@^2.0.0, request@^2.74.0:
+request@^2.0.0, request@^2.74.0, request@^2.83.0:
   version "2.83.0"
   resolved "http://registry.npm.taobao.org/request/download/request-2.83.0.tgz#ca0b65da02ed62935887808e6f510381034e3356"
   dependencies:

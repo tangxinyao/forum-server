@@ -14,8 +14,10 @@ app.use(bodyParser({
 }));
 // routes
 const Router = require("koa-router");
-const router = new Router();
-app.use(router.routes()).use(router.allowedMethods());
 const routes_1 = require("./routes");
-router.use('/users', routes_1.userRouter.routes(), routes_1.userRouter.allowedMethods());
+const routes_2 = require("./routes");
+const router = new Router();
+router.use('/users', routes_2.userRouter.routes(), routes_2.userRouter.allowedMethods());
+router.use('/sessions', routes_1.sessionRouter.routes(), routes_1.sessionRouter.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000);

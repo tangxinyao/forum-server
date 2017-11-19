@@ -1,7 +1,6 @@
 import * as mongoose from 'mongoose';
 
 interface IUser extends mongoose.Document {
-    _id: string;
     avatarUrl?: string;
     city?: string;
     createdTime?: Date;
@@ -10,6 +9,11 @@ interface IUser extends mongoose.Document {
     nickName?: string;
     province?: string;
     updatedTime?: Date;
+}
+
+function handlePreSave(this: IUser, next: any) {
+    this.updatedTime = new Date();
+    next();
 }
 
 const userSchema: mongoose.Schema = new mongoose.Schema({
@@ -23,9 +27,6 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
     updatedTime: { type: Date }
 });
 
-userSchema.pre('save', function handlePreSave(this: IUser, next) {
-    this.updatedTime = new Date();
-    next();
-});
+userSchema.pre('save', handlePreSave);
 
 export const User = mongoose.model<IUser>('User', userSchema);
