@@ -9,22 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Router = require("koa-router");
-const request = require("request");
-const url_1 = require("../utils/url");
+const session_1 = require("../services/session");
 exports.sessionRouter = new Router();
 exports.sessionRouter.get('/', (ctx) => __awaiter(this, void 0, void 0, function* () {
-    console.log(ctx.query.code);
-    request(url_1.getSessionUrl(ctx.query.code), (err, res, body) => {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        const sessionInfo = JSON.parse(body);
-        if (sessionInfo.errcode) {
-            console.log(sessionInfo.errmsg);
-            return;
-        }
-        console.log(sessionInfo.openid);
-    });
+    const { code, encryptedData, iv } = ctx.query;
+    const data = yield session_1.getCryptedData(code, encryptedData, iv);
+    console.log(data);
     ctx.body = 'ok';
 }));

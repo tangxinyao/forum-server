@@ -5,6 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "no-string-literal": false,
         "max-line-length": [
             true,
             240
