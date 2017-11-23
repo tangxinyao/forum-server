@@ -16,12 +16,12 @@ app.use(bodyParser({
 
 // routes
 import * as Router from 'koa-router';
-import { sessionRouter } from './routes';
+import { tokenRouter } from './routes';
 import { userRouter } from './routes';
 
 const router = new Router();
 router.use('/users', userRouter.routes(), userRouter.allowedMethods());
-router.use('/sessions', sessionRouter.routes(), sessionRouter.allowedMethods());
+router.use('/token', tokenRouter.routes(), tokenRouter.allowedMethods());
 
 app.use(router.routes()).use(router.allowedMethods());
 

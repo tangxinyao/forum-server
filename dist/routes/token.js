@@ -9,11 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Router = require("koa-router");
-const session_1 = require("../services/session");
-exports.sessionRouter = new Router();
-exports.sessionRouter.get('/', (ctx) => __awaiter(this, void 0, void 0, function* () {
-    const { code, encryptedData, iv } = ctx.query;
-    const data = yield session_1.getCryptedData(code, encryptedData, iv);
-    console.log(data);
+const constant_1 = require("../config/constant");
+const authorization_1 = require("../middlewares/authorization");
+const register_1 = require("../middlewares/register");
+exports.tokenRouter = new Router();
+exports.tokenRouter.get('/', authorization_1.authorization(), register_1.register(), (ctx) => __awaiter(this, void 0, void 0, function* () {
+    if (ctx.state.cert.loginState === constant_1.LoginState.SUCCESS) {
+        const userInfo = ctx.state.cert.userInfo;
+    }
     ctx.body = 'ok';
 }));

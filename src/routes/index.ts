@@ -1,2 +1,2 @@
-export { sessionRouter } from './session';
+export { tokenRouter } from './token';
 export { userRouter } from './user';

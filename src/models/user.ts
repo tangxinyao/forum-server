@@ -1,12 +1,13 @@
 import * as mongoose from 'mongoose';
 
-interface IUser extends mongoose.Document {
+export interface IUser extends mongoose.Document {
     avatarUrl?: string;
     city?: string;
     createdTime?: Date;
-    gender?: string;
+    gender?: number;
     mobile?: string;
     nickName?: string;
+    openid?: string;
     province?: string;
     updatedTime?: Date;
 }

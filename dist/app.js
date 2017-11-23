@@ -18,6 +18,6 @@ const routes_1 = require("./routes");
 const routes_2 = require("./routes");
 const router = new Router();
 router.use('/users', routes_2.userRouter.routes(), routes_2.userRouter.allowedMethods());
-router.use('/sessions', routes_1.sessionRouter.routes(), routes_1.sessionRouter.allowedMethods());
+router.use('/token', routes_1.tokenRouter.routes(), routes_1.tokenRouter.allowedMethods());
 app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000);
