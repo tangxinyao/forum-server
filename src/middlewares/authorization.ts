@@ -1,7 +1,7 @@
 import * as Koa from 'koa';
 import * as request from 'request';
 
-import { LoginState } from '../config/constant';
+import { LoginState } from '../config/code';
 import { decryptData } from '../utils/crypto';
 import { getSessionUrl } from '../utils/url';
 
@@ -23,8 +23,8 @@ export function authorization(): Koa.Middleware {
     return async (ctx, next) => {
         const { code, encryptedData, iv } = ctx.query;
         try {
-            const userInfo = await getUserInfo(code, encryptedData, iv);
-            ctx.state.cert = userInfo ? { userInfo, loginState: LoginState.SUCCESS } : { loginState: LoginState.FAIL_ON_DECRYPT };
+            const user = await getUserInfo(code, encryptedData, iv);
+            ctx.state.cert = user ? { user, loginState: LoginState.SUCCESS } : { loginState: LoginState.FAIL_ON_DECRYPT };
         } catch (err) {
             ctx.state.cert = { loginState: LoginState.FAIL_ON_WX };
         }

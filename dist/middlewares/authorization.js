@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const request = require("request");
-const constant_1 = require("../config/constant");
+const code_1 = require("../config/code");
 const crypto_1 = require("../utils/crypto");
 const url_1 = require("../utils/url");
 function getUserInfo(code, encryptedData, iv) {
@@ -29,11 +29,11 @@ function authorization() {
     return (ctx, next) => __awaiter(this, void 0, void 0, function* () {
         const { code, encryptedData, iv } = ctx.query;
         try {
-            const userInfo = yield getUserInfo(code, encryptedData, iv);
-            ctx.state.cert = userInfo ? { userInfo, loginState: constant_1.LoginState.SUCCESS } : { loginState: constant_1.LoginState.FAIL_ON_DECRYPT };
+            const user = yield getUserInfo(code, encryptedData, iv);
+            ctx.state.cert = user ? { user, loginState: code_1.LoginState.SUCCESS } : { loginState: code_1.LoginState.FAIL_ON_DECRYPT };
         }
         catch (err) {
-            ctx.state.cert = { loginState: constant_1.LoginState.FAIL_ON_WX };
+            ctx.state.cert = { loginState: code_1.LoginState.FAIL_ON_WX };
         }
         return next();
     });

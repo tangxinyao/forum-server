@@ -9,9 +9,10 @@ const userSchema = new mongoose.Schema({
     avatarUrl: String,
     city: String,
     createdTime: { type: Date, default: Date.now() },
-    gender: String,
+    gender: Number,
     mobile: String,
     nickName: String,
+    openId: String,
     province: String,
     updatedTime: { type: Date }
 });

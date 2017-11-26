@@ -1,5 +1,3 @@
-export enum LoginState {
-    SUCCESS,
-    FAIL_ON_DECRYPT,
-    FAIL_ON_WX
-}
+export const SECRET_KEY = 'HELLO_WORLD';
+export const WX_APPID = 'wxd02f42e2970da19b';
+export const WX_SECRET = 'e3a7f408b3628717d181766c0d4eb0b2';

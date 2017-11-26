@@ -1,8 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var LoginState;
-(function (LoginState) {
-    LoginState[LoginState["SUCCESS"] = 0] = "SUCCESS";
-    LoginState[LoginState["FAIL_ON_DECRYPT"] = 1] = "FAIL_ON_DECRYPT";
-    LoginState[LoginState["FAIL_ON_WX"] = 2] = "FAIL_ON_WX";
-})(LoginState = exports.LoginState || (exports.LoginState = {}));
+exports.SECRET_KEY = 'HELLO_WORLD';
+exports.WX_APPID = 'wxd02f42e2970da19b';
+exports.WX_SECRET = 'e3a7f408b3628717d181766c0d4eb0b2';

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const crypto = require("crypto");
-const url_1 = require("../config/url");
+const constant_1 = require("../config/constant");
 function decryptData(sessionKey, encryptedData, iv) {
     const _sessionKey = new Buffer(sessionKey, 'base64');
     const _encryptedData = new Buffer(encryptedData, 'base64');
@@ -17,7 +17,7 @@ function decryptData(sessionKey, encryptedData, iv) {
     catch (err) {
         throw new Error('Illegal Buffer');
     }
-    if (result.watermark.appid !== url_1.APPID) {
+    if (result.watermark.appid !== constant_1.WX_APPID) {
         throw new Error('Illegal Buffer');
     }
     return result;

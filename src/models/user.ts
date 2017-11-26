@@ -7,7 +7,7 @@ export interface IUser extends mongoose.Document {
     gender?: number;
     mobile?: string;
     nickName?: string;
-    openid?: string;
+    openId?: string;
     province?: string;
     updatedTime?: Date;
 }
@@ -21,9 +21,10 @@ const userSchema: mongoose.Schema = new mongoose.Schema({
     avatarUrl: String,
     city: String,
     createdTime: { type: Date, default: Date.now() },
-    gender: String,
+    gender: Number,
     mobile: String,
     nickName: String,
+    openId: String,
     province: String,
     updatedTime: { type: Date }
 });

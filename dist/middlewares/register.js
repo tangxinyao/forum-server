@@ -8,16 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const constant_1 = require("../config/constant");
+const code_1 = require("../config/code");
 const user_1 = require("../models/user");
 function register() {
     return (ctx, next) => __awaiter(this, void 0, void 0, function* () {
-        if (ctx.state.cert.loginState === constant_1.LoginState.SUCCESS) {
-            const userInfo = ctx.state.cert.userInfo;
-            const users = yield user_1.User.find({ openid: userInfo.openid });
-            if (users.length === 0) {
-                const { avatarUrl, city, gender, nickName, openid, province } = userInfo;
-                user_1.User.create({ avatarUrl, city, gender, nickName, openid, province });
+        if (ctx.state.cert.loginState === code_1.LoginState.SUCCESS) {
+            const user = ctx.state.cert.user;
+            const regisetedUsers = yield user_1.User.find({ openId: user.openId });
+            if (regisetedUsers.length === 0) {
+                const { avatarUrl, city, gender, nickName, openId, province } = user;
+                user_1.User.create({ avatarUrl, city, gender, nickName, openId, province });
             }
             return next();
         }

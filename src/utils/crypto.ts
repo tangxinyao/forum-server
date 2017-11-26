@@ -1,6 +1,6 @@
 import * as crypto from 'crypto';
 
-import { APPID } from '../config/url';
+import { WX_APPID } from '../config/constant';
 
 export function decryptData(sessionKey: string, encryptedData: string, iv: string) {
     const _sessionKey = new Buffer(sessionKey, 'base64');
@@ -18,7 +18,7 @@ export function decryptData(sessionKey: string, encryptedData: string, iv: strin
         throw new Error('Illegal Buffer');
     }
 
-    if (result.watermark.appid !== APPID) {
+    if (result.watermark.appid !== WX_APPID) {
         throw new Error('Illegal Buffer');
     }
 

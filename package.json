@@ -6,9 +6,11 @@
   "author": "tang <2578873659@qq.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/jsonwebtoken": "^7.2.3",
     "@types/koa-jwt": "^3.2.2",
     "@types/mongoose": "^4.7.27",
     "@types/request": "^2.0.8",
+    "jsonwebtoken": "^8.1.0",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-jwt": "^3.2.2",
